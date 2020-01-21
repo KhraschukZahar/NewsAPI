@@ -1,8 +1,8 @@
-.header {
-  background-color: #3b4f64;
-}
 .container {
-  background-color: #34495e;
+  background-color: #334f6b;
+}
+.container-fluid {
+  background-color: #345b81;
 }
 
 .cf:before,
@@ -25,9 +25,10 @@
   padding: 0;
   list-style: none;
 }
-
+.selected {
+  background-color: #4f5d6e;
+}
 .menu {
-  margin: 50px auto;
   width: 800px;
   width: -moz-fit-content;
   width: -webkit-fit-content;
