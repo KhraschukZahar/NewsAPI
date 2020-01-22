@@ -29,6 +29,7 @@
   background-color: #4f5d6e;
 }
 .menu {
+  margin-left: 465px;
   width: 800px;
   width: -moz-fit-content;
   width: -webkit-fit-content;
@@ -141,4 +142,26 @@
 
 .menu > li:hover .submenu li:nth-child(odd) {
   transform: skewX(-25deg) translateX(-15px);
+}
+
+.newsTitle {
+  color: #e74c3c;
+}
+.newsArticle {
+  color: #ffffff;
+}
+
+.newsImg {
+  width: 100%;
+  height: auto;
+}
+.blockNews {
+  z-index: 0;
+  text-align: justify;
+  border: 2px solid white;
+  padding: 10px;
+  margin: 10px;
+  width: 350px;
+  height: 450px;
+  overflow: hidden;
 }

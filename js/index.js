@@ -13,15 +13,15 @@ let au = document.querySelector("#au");
 let ca = document.querySelector("#ca");
 let cn = document.querySelector("#cn");
 
-let currentCategoty = "business";
+let currentCategory = "business";
 let currentCountry = "ua";
 
-business.addEventListener("click", ChangeCategoty);
-sport.addEventListener("click", ChangeCategoty);
-science.addEventListener("click", ChangeCategoty);
-technology.addEventListener("click", ChangeCategoty);
-health.addEventListener("click", ChangeCategoty);
-entertainment.addEventListener("click", ChangeCategoty);
+business.addEventListener("click", ChangeCategory);
+sport.addEventListener("click", ChangeCategory);
+science.addEventListener("click", ChangeCategory);
+technology.addEventListener("click", ChangeCategory);
+health.addEventListener("click", ChangeCategory);
+entertainment.addEventListener("click", ChangeCategory);
 
 ua.addEventListener("click", ChangeCountry);
 de.addEventListener("click", ChangeCountry);
@@ -45,10 +45,10 @@ function ChangeCountry() {
 
   contr.setAttribute("class", "selected");
   currentCountry = contr.id;
-  Request(currentCategoty);
+  Request(currentCategory);
 }
 
-function ChangeCategoty() {
+function ChangeCategory() {
   let category = this;
   business.classList.remove("active");
   sport.classList.remove("active");
@@ -67,7 +67,7 @@ function ChangeCategoty() {
 }
 
 async function Request(cat) {
-  let url = `https://newsapi.org/v2/top-headlines?country=${currentCountry}&category=${cat}&apiKey=18f1c87e444741aca30db0a569bba999`;
+  let url = `https://newsapi.org/v2/top-headlines?country=${currentCountry}&category=${cat}&apiKey=937698e691464d81b13a65e65146c927`;
   var response = await fetch(url);
   var data = await response.json();
   console.log(data);
@@ -85,27 +85,30 @@ function GetNews(data) {
   wrapper.setAttribute("class", "wrapper");
   sport.appendChild(wrapper);
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 6; i++) {
+    let newsBlock = document.createElement("div");
     let h3 = document.createElement("h3");
+    newsBlock.className = "blockNews col-md-4";
     h3.className = "newsTitle";
     h3.innerHTML = data.articles[i].title;
-    wrapper.appendChild(h3);
+    wrapper.appendChild(newsBlock);
+    newsBlock.appendChild(h3);
     let img = document.createElement("img");
     img.className = "newsImg";
     img.setAttribute("alt", "Image");
     img.setAttribute("src", data.articles[i].urlToImage);
-    wrapper.appendChild(img);
+    newsBlock.appendChild(img);
     let desc = document.createElement("div");
     desc.className = "newsArticle";
     desc.innerHTML = data.articles[i].description;
-    wrapper.appendChild(desc);
+    newsBlock.appendChild(desc);
     let date = document.createElement("span");
     date.className = "newsPublishedAt";
     date.innerHTML = data.articles[i].publishedAt;
-    wrapper.appendChild(date);
+    newsBlock.appendChild(date);
     let author = document.createElement("span");
     author.className = "newsAuthor";
     author.innerHTML = data.articles[i].author;
-    wrapper.appendChild(author);
+    newsBlock.appendChild(author);
   }
 }
